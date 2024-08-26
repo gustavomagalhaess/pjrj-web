@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>Listagem de assuntos</h1>
+        </div>
+        <div class="col-sm-2 d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-success" (click)="abrirModal()">Incluir</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Descricao</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (assunto of assuntos; track assunto.CodAs) {
+                        <tr>
+                            <th scope="row">{{ assunto.CodAs }}</th>
+                            <td>{{ assunto.Descricao }}</td>
+                            <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-primary" (click)="abrirModalBuscar(assunto.CodAs)">Alterar</button>
+                                <button type="button" class="btn btn-danger" (click)="abrirModalExcluir(assunto)">Excluir</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12 d-grid gap-2 d-md-flex justify-content-md-center">
+                @if (count > 0) {
+                    <nav>
+                        <ul class="pagination">
+                            <!-- Previous Page Link -->
+                            @if (pagination.current_page <= 1) {
+                                <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                </li>
+                            } @else {
+                                <li class="page-item">
+                                    <button class="page-link" (click)="listar(pagination.prev_page_url)" rel="prev" aria-label="&laquo; Previous">&lsaquo;</button>
+                                </li>
+                            }
+
+                            <!-- Pagination Elements -->
+                            @for (link of links; track link) {
+                                <!-- Array Of Links -->
+                                    @if (isNumber(link.label)) {
+                                        @if (link.label == pagination.current_page) {
+                                            <li class="page-item active" aria-current="page"><span class="page-link">{{ link.label }}</span></li>
+                                        }
+                                        @else {
+                                            <li class="page-item">
+                                                <button class="btn btn-default" (click)="listar(link.url)">{{ link.label }}</button>
+                                            </li>
+                                        }
+                                    }
+                            }
+
+                            <!-- Next Page Link -->
+                            @if (pagination.next_page_url != null) {
+                                <li class="page-item">
+                                    <button class="page-link" (click)="listar(pagination.next_page_url)" rel="next" aria-label="Next &raquo;">&rsaquo;</button>
+                                </li>
+                            } @else {
+                                <li class="page-item disabled" aria-disabled="true" aria-label="Next &raquo;">
+                                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                }
+            </div>
+        </div>
+    </div>
+</div>

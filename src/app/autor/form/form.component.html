@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="modal-header titulo-modal">
+            <div class="titulo-texto">
+                <div>Formuário de autor</div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="autorForm">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" maxlength="40"
+                        formControlName="nome"/>
+                </div>
+            </form>
+            @if(errors.length > 0) {
+                <div class="row justify-content-md-center">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            @for(error of errors; track error) {
+                                <li class="list-group-item list-group-item-danger"> {{ error }}</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-primary" (click)="salvar()">{{ submitBtn }}</button>
+                <button type="button" class="btn btn-light" (click)="activeModal.close()" >Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
