@@ -30,7 +30,7 @@
                 <div class="mb-3">
                     <label for="autores" class="form-label">Autores</label>
                     <select class="form-select" id="autores" name="autores" formControlName="autores" multiple>
-                        @for (autor of autores; track autor.CodAu) {
+                        @for (autor of autores; track autor) {
                             <option [ngValue]="autor">
                                 {{ autor.Nome }}
                             </option>
@@ -40,7 +40,7 @@
                 <div class="mb-3">
                     <label for="assuntos" class="form-label">Assuntos</label>
                     <select class="form-select" id="assuntos" name="assuntos" formControlName="assuntos" multiple>
-                        @for (assunto of assuntos; track assunto.CodAu) {
+                        @for (assunto of assuntos; track assunto) {
                             <option [ngValue]="assunto">
                                 {{ assunto.Descricao }}
                             </option>

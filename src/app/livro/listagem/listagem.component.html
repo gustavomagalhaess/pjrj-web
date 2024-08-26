@@ -83,5 +83,15 @@
                 }
             </div>
         </div>
+        <div class="row">
+          <div class="col-sm-6">
+            @if (created) {
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ mensagem }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            }
+          </div>
+        </div>
     </div>
 </div>

@@ -16,6 +16,8 @@ export class ListagemComponent implements OnInit {
   public pagination: any = [];
   public links: any = [];
   public count: number = 0;
+  public created: boolean = false;
+  public mensagem: string = 'Assunto salvo com sucesso.';
 
   private options: NgbModalOptions = {
     backdrop: 'static',
@@ -41,7 +43,6 @@ export class ListagemComponent implements OnInit {
         this.count = response.data.length;
         this.links = response.links;
       }
-  
     );
   }
 
@@ -54,21 +55,25 @@ export class ListagemComponent implements OnInit {
   }
 
   abrirModal() {
+    this.created = false;
     const modalRef = this.modalService.open(FormComponent, this.options);
 
-    modalRef.componentInstance.saved.subscribe((assunto: any) => {
+    modalRef.componentInstance.saved.subscribe((response: any) => {
+      this.created = response.created;
       this.listar();
       modalRef.componentInstance.activeModal.close();
     });
   }
-  
+
   abrirModalBuscar(CodAs: number) {
+    this.created = false;
     this.buscar(CodAs).subscribe(
       (assunto) => {
         const modalRef = this.modalService.open(FormComponent, this.options);
 
         modalRef.componentInstance.assunto = assunto;
-        modalRef.componentInstance.saved.subscribe((assunto: any) => {
+        modalRef.componentInstance.saved.subscribe((response: any) => {
+          this.created = response.updated;
           this.listar();
           modalRef.componentInstance.activeModal.close();
         });
@@ -77,10 +82,13 @@ export class ListagemComponent implements OnInit {
   }
 
   abrirModalExcluir(assunto: any) {
+    this.created = false;
     const modalRef = this.modalService.open(FormExcluirComponent, this.options);
 
     modalRef.componentInstance.assunto = assunto;
-    modalRef.componentInstance.exluded.subscribe((autor: any) => {
+    modalRef.componentInstance.exluded.subscribe((response: any) => {
+      this.created = response.deleted;
+      this.mensagem = 'Assunto excluído com sucesso';
       this.listar();
       modalRef.componentInstance.activeModal.close();
     });
