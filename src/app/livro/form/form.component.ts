@@ -3,6 +3,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Validators } from '@angular/forms';
+import { Livro } from '../livro'
 import { LivroService } from '../livro.service';
 import { AutorService } from '../../autor/autor.service';
 import { AssuntoService } from '../../assunto/assunto.service';
@@ -17,13 +18,13 @@ import { AssuntoService } from '../../assunto/assunto.service';
 export class FormComponent implements OnInit, AfterViewInit {
 
     @Output() saved = new EventEmitter();
-    @Input() livro?: any;
+    @Input() livro?: Livro;
     public autores: any[] = [];
     public assuntos: any[] = [];
     public submitBtn = 'Salvar';
     public livroForm!: FormGroup;
     public errors: any = [];
-    
+
     constructor(
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder,
@@ -45,7 +46,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.buscarAutores();
         this.buscarAssuntos();
     }
-    
+
     ngAfterViewInit() {
         if (this.livro) {
             this.livroForm.get('titulo')?.setValue(this.livro.Titulo);
@@ -56,7 +57,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     salvar() {
-        const livro = this.livroForm.value; 
+        const livro = this.livroForm.value;
         let crud: any = null;
 
         if (this.livro) {

@@ -3,6 +3,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Validators } from '@angular/forms';
+import { Assunto } from '../assunto'
 import { AssuntoService } from '../assunto.service';
 
 @Component({
@@ -15,15 +16,15 @@ import { AssuntoService } from '../assunto.service';
 export class FormComponent implements OnInit, AfterViewInit {
 
     @Output() saved = new EventEmitter();
-    @Input() assunto?: any;
+    @Input() assunto?: Assunto;
     public submitBtn = 'Salvar';
     public assuntoForm!: FormGroup;
     public errors: any = [];
-    
+
     constructor(
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder,
-        private service: AssuntoService   
+        private service: AssuntoService
     ) { }
 
     ngOnInit(): void {
@@ -31,7 +32,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             'descricao': ['', [Validators.required, Validators.maxLength(40)]],
         });
     }
-    
+
     ngAfterViewInit() {
         if (this.assunto) {
             this.assuntoForm.get('descricao')?.setValue(this.assunto.Descricao);
@@ -39,7 +40,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     salvar() {
-        const autor = this.assuntoForm.value; 
+        const autor = this.assuntoForm.value;
         let crud: any = null;
 
         if (this.assunto) {
@@ -62,7 +63,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 }
             }
         });
-    
+
     }
 
 }

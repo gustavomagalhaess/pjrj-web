@@ -3,6 +3,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Validators } from '@angular/forms';
+import { Autor } from '../autor'
 import { AutorService } from '../autor.service';
 
 @Component({
@@ -15,15 +16,15 @@ import { AutorService } from '../autor.service';
 export class FormComponent implements OnInit, AfterViewInit {
 
     @Output() saved = new EventEmitter();
-    @Input() autor?: any;
+    @Input() autor?: Autor;
     public submitBtn = 'Salvar';
     public autorForm!: FormGroup;
     public errors: any = [];
-    
+
     constructor(
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder,
-        private service: AutorService   
+        private service: AutorService
     ) { }
 
     ngOnInit(): void {
@@ -31,7 +32,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             'nome': ['', [Validators.required, Validators.maxLength(40)]],
         });
     }
-    
+
     ngAfterViewInit() {
         if (this.autor) {
             this.autorForm.get('nome')?.setValue(this.autor.Nome);
@@ -39,7 +40,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     salvar() {
-        const autor = this.autorForm.value; 
+        const autor = this.autorForm.value;
         let crud: any = null;
 
         if (this.autor) {
@@ -62,7 +63,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 }
             }
         });
-    
+
     }
 
 }
