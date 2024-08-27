@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Assunto } from '../assunto';
 import { AssuntoService } from '../assunto.service';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormComponent } from '../form/form.component';
@@ -12,7 +13,7 @@ import { FormExcluirComponent } from '../form-excluir/form-excluir.component';
 })
 export class ListagemComponent implements OnInit {
 
-  public assuntos: any;
+  public assuntos: Assunto[] = [];
   public pagination: any = [];
   public links: any = [];
   public count: number = 0;

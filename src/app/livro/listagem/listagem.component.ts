@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Livro } from '../livro'
 import { LivroService } from '../livro.service';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormComponent } from '../form/form.component';
@@ -12,7 +13,7 @@ import { FormExcluirComponent } from '../form-excluir/form-excluir.component';
 })
 export class ListagemComponent implements OnInit {
 
-  public livros: any;
+  public livros: Livro[] = [];
   public pagination: any = [];
   public links: any = [];
   public count: number = 0;
