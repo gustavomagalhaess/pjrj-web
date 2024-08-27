@@ -63,6 +63,7 @@ export class ListagemComponent implements OnInit {
       this.created = response.created;
       this.listar();
       modalRef.componentInstance.activeModal.close();
+      this.setTempoMensagem();
     });
   }
 
@@ -77,6 +78,7 @@ export class ListagemComponent implements OnInit {
           this.created = response.updated;
           this.listar();
           modalRef.componentInstance.activeModal.close();
+          this.setTempoMensagem();
         });
       }
     );
@@ -92,6 +94,11 @@ export class ListagemComponent implements OnInit {
       this.mensagem = 'Autor excluído com sucesso';
       this.listar();
       modalRef.componentInstance.activeModal.close();
+      this.setTempoMensagem();
     });
+  }
+
+  private setTempoMensagem() {
+    setTimeout(() => this.created = false, 5000);
   }
 }
