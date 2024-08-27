@@ -5,9 +5,9 @@ import { ListagemComponent as AssuntoListagemComponent } from './assunto/listage
 import { RelatorioComponent } from './relatorio/relatorio.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: '/livros', pathMatch: 'full'  },
     { path: 'livros', component: LivroListagemComponent },
     { path: 'autores', component: AutorListagemComponent },
     { path: 'assuntos', component: AssuntoListagemComponent },
     { path: 'relatorio', component: RelatorioComponent }
 ];
-    
