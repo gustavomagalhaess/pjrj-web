@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Livro } from '../livro'
+import { Livro } from '../livro';
 import { LivroService } from '../livro.service';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormComponent } from '../form/form.component';
 import { FormExcluirComponent } from '../form-excluir/form-excluir.component';
+import { PaginatorComponent } from '../../paginator/paginator.component';
 
 @Component({
   selector: 'livro-listagem',
   standalone: true,
-  imports: [],
+  imports: [PaginatorComponent],
+
   templateUrl: './listagem.component.html'
 })
 export class ListagemComponent implements OnInit {
@@ -45,10 +47,6 @@ export class ListagemComponent implements OnInit {
         this.links = response.links;
       }
     );
-  }
-
-  public isNumber(str: any) {
-    return !isNaN(str);
   }
 
   private buscar(Codl: number) {

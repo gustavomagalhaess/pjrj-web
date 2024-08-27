@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Autor } from '../autor'
+import { Autor } from '../autor';
 import { AutorService } from '../autor.service';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { FormComponent } from '../form/form.component';
 import { FormExcluirComponent } from '../form-excluir/form-excluir.component';
-
+import { PaginatorComponent } from '../../paginator/paginator.component';
 @Component({
   selector: 'autor-listagem',
   standalone: true,
-  imports: [],
+  imports: [ PaginatorComponent ],
   templateUrl: './listagem.component.html'
 })
 export class ListagemComponent implements OnInit {
