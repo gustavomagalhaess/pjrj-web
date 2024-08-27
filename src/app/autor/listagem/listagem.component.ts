@@ -47,10 +47,6 @@ export class ListagemComponent implements OnInit {
     );
   }
 
-  public isNumber(str: any) {
-    return !isNaN(str);
-  }
-
   private buscar(CodAu: number) {
     return this.service.buscar(CodAu);
   }

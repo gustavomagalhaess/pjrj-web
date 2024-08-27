@@ -48,10 +48,6 @@ export class ListagemComponent implements OnInit {
     );
   }
 
-  public isNumber(str: any) {
-    return !isNaN(str);
-  }
-
   private buscar(CodAs: number) {
     return this.service.buscar(CodAs);
   }
