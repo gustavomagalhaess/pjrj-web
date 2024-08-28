@@ -8,18 +8,25 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 export class RelatorioService extends ApiService {
 
   private route = '/relatorio';
+  private options = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+  }
 
   constructor(http: HttpClient) {
     super(http);
   }
 
   listar() {
-     const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-    }
+    return this.http.get(this.getUrl(this.route), this.options);
+  }
 
-    return this.http.get(this.getUrl(this.route), options);
+  autores() {
+    return this.http.get(this.getUrl(this.route) + '/autores', this.options);
+  }
+
+  assuntos() {
+    return this.http.get(this.getUrl(this.route) + '/assuntos', this.options);
   }
 }

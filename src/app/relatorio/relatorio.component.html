@@ -1,15 +1,55 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-10">
-            <h1>Relatório de livros</h1>
-        </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <dx-pie-chart
+        [dataSource]="autores"
+        title="Livros por autor."
+        type="doughnut"
+      >
+        <dxi-series
+          argumentField="Nome"
+          valueField="Qde"
+        >
+          <dxo-label
+            [visible]="true"
+            position="columns"
+          >
+            <dxo-connector [visible]="true"></dxo-connector>
+          </dxo-label>
+        </dxi-series>
+      </dx-pie-chart>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <dx-data-grid id="dataGrid"
-                [dataSource]="livros"
-                keyExpr="Codl"
-            ></dx-data-grid>
-        </div>
+    <div class="col-sm-6">
+      <dx-pie-chart
+        [dataSource]="assuntos"
+        title="Livros por assunto."
+        type="doughnut"
+      >
+        <dxi-series
+          argumentField="Descricao"
+          valueField="Qde"
+        >
+          <dxo-label
+            [visible]="true"
+            position="columns"
+          >
+            <dxo-connector [visible]="true"></dxo-connector>
+          </dxo-label>
+        </dxi-series>
+      </dx-pie-chart>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h1>Relatório de livros</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <dx-data-grid id="dataGrid"
+                    [dataSource]="livros"
+                    keyExpr="Codl"
+      ></dx-data-grid>
+    </div>
+  </div>
 </div>
