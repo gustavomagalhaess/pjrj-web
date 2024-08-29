@@ -9,8 +9,12 @@ https://github.com/gustavomagalhaess/pjrj-api
 
 ### [Instalar Node e Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-
-### Executar server virtual
+### Instalar as dependências
 ```
-ng serve
+npm install
+```
+
+### Executar o servidor virtual
+```
+npm start
 ```
