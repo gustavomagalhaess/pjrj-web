@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+  <tr>
+    @for (columnName of columnNames; track columnName) {
+      <th scope="col">{{ columnName }}</th>
+    }
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (record of records; track record) {
+      <tr>
+        @for (keyValue of objectToArray(record); track keyValue[0]) {
+          <td>{{ getValue(keyValue) }}</td>
+        }
+        <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn btn-primary" (click)="update(record)">Update</button>
+          <button type="button" class="btn btn-danger" (click)="delete(record)">Delete</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
