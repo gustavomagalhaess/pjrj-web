@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { PaginatorComponent } from '../../paginator/paginator.component';
+import { List } from '../../shared/list/list';
 import { ListComponent } from '../../shared/list/list.component';
 import { Author } from '../author';
 import { AuthorService } from '../author.service';
@@ -13,7 +14,7 @@ import { FormComponent } from '../form/form.component';
   imports: [ListComponent, PaginatorComponent],
   templateUrl: './author-list.component.html'
 })
-export class AuthorListComponent implements OnInit {
+export class AuthorListComponent implements OnInit, List {
 
   public authors: Author[] = [];
   public pagination: any = [];

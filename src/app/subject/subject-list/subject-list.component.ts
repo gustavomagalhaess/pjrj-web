@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { PaginatorComponent } from '../../paginator/paginator.component';
+import { List } from '../../shared/list/list';
 import { ListComponent } from '../../shared/list/list.component';
 import { DeleteFormComponent } from '../delete-form/delete-form.component';
 import { FormComponent } from '../form/form.component';
@@ -13,7 +14,7 @@ import { SubjectService } from '../subject.service';
   imports: [ListComponent, PaginatorComponent],
   templateUrl: './subject-list.component.html'
 })
-export class SubjectListComponent implements OnInit {
+export class SubjectListComponent implements OnInit, List {
 
   public subjects: Subject[] = [];
   public pagination: any = [];

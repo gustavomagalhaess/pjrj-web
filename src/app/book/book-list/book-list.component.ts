@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { PaginatorComponent } from '../../paginator/paginator.component';
+import { List } from '../../shared/list/list';
 import { ListComponent } from '../../shared/list/list.component';
 import { Book } from '../book';
 import { BookService } from '../book.service';
@@ -13,7 +14,7 @@ import { FormComponent } from '../form/form.component';
   imports: [ListComponent, PaginatorComponent],
   templateUrl: './book-list.component.html'
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, List {
 
   public books: Book[] = [];
   public pagination: any = [];
@@ -73,7 +74,7 @@ export class BookListComponent implements OnInit {
     });
   }
 
-  private update (book: Book) {
+  update (book: Book) {
     this.created = false;
     this.find(book.id).subscribe(
       (book) => {
@@ -90,7 +91,7 @@ export class BookListComponent implements OnInit {
     );
   }
 
-  private delete (book: Book) {
+  delete (book: Book) {
     this.created = false;
     const modalRef = this.modalService.open(DeleteFormComponent, this.options);
 
