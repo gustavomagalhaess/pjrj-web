@@ -39,15 +39,15 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   salvar () {
     const subject = this.subjectForm.value;
-    let crud: any = null;
+    let save: any = null;
 
     if (this.subject) {
-      crud = this.service.save(subject, this.subject.id);
+      save = this.service.save(subject, this.subject.id);
     } else {
-      crud = this.service.save(subject);
+      save = this.service.save(subject);
     }
 
-    crud.subscribe({
+    save.subscribe({
       next: (response: any) => {
         this.saved.emit(response);
       },
