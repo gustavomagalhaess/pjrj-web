@@ -1,21 +1,21 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Form as FormInterface } from '../../shared/form/form';
+import { FormComponent } from '../../shared/form/form.component';
 import { Author } from '../author';
 import { AuthorService } from '../author.service';
 
 @Component({
   selector: 'author-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  imports: [FormsModule, ReactiveFormsModule, FormComponent],
+  templateUrl: './author-form.component.html'
 })
-export class FormComponent implements OnInit, AfterViewInit {
+export class AuthorFormComponent implements OnInit, AfterViewInit, FormInterface {
 
   @Output() saved = new EventEmitter();
   @Input() author?: Author;
-  public submitBtn = 'Salvar';
   public autorForm!: FormGroup;
   public errors: any = [];
 

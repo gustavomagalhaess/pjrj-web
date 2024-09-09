@@ -1,21 +1,21 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Form as FormInterface } from '../../shared/form/form';
+import { FormComponent } from '../../shared/form/form.component';
 import { Subject } from '../subject';
 import { SubjectService } from '../subject.service';
 
 @Component({
   selector: 'subject-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  imports: [FormsModule, ReactiveFormsModule, FormComponent],
+  templateUrl: './subject-form.component.html'
 })
-export class FormComponent implements OnInit, AfterViewInit {
+export class SubjectFormComponent implements OnInit, AfterViewInit, FormInterface {
 
   @Output() saved = new EventEmitter();
   @Input() subject?: Subject;
-  public submitBtn = 'Save';
   public subjectForm!: FormGroup;
   public errors: any = [];
 
@@ -37,7 +37,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
   }
 
-  salvar () {
+  save () {
     const subject = this.subjectForm.value;
     let save: any = null;
 

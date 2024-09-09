@@ -4,14 +4,14 @@ import { PaginatorComponent } from '../../paginator/paginator.component';
 import { List } from '../../shared/list/list';
 import { ListComponent } from '../../shared/list/list.component';
 import { Book } from '../book';
+import { BookFormComponent } from '../book-form/book-form.component';
 import { BookService } from '../book.service';
 import { DeleteFormComponent } from '../delete-form/delete-form.component';
-import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'book-list',
   standalone: true,
-  imports: [ListComponent, PaginatorComponent],
+  imports: [ListComponent, PaginatorComponent, BookFormComponent],
   templateUrl: './book-list.component.html'
 })
 export class BookListComponent implements OnInit, List {
@@ -64,7 +64,7 @@ export class BookListComponent implements OnInit, List {
 
   store () {
     this.created = false;
-    const modalRef = this.modalService.open(FormComponent, this.options);
+    const modalRef = this.modalService.open(BookFormComponent, this.options);
 
     modalRef.componentInstance.saved.subscribe((response: any) => {
       this.created = response.created;
@@ -78,7 +78,7 @@ export class BookListComponent implements OnInit, List {
     this.created = false;
     this.find(book.id).subscribe(
       (book) => {
-        const modalRef = this.modalService.open(FormComponent, this.options);
+        const modalRef = this.modalService.open(BookFormComponent, this.options);
 
         modalRef.componentInstance.book = book;
         modalRef.componentInstance.saved.subscribe((response: any) => {

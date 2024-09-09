@@ -1,0 +1,13 @@
+<app-form
+  [formLabel]="'Subject form'"
+  [submitBtn]="'Save subject'"
+  [errors]="errors"
+  (saved)="save()">
+  <form [formGroup]="subjectForm">
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="description" name="description" maxlength="20"
+             formControlName="description"/>
+    </div>
+  </form>
+</app-form>>

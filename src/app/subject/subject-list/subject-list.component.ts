@@ -4,7 +4,7 @@ import { PaginatorComponent } from '../../paginator/paginator.component';
 import { List } from '../../shared/list/list';
 import { ListComponent } from '../../shared/list/list.component';
 import { DeleteFormComponent } from '../delete-form/delete-form.component';
-import { FormComponent } from '../form/form.component';
+import { SubjectFormComponent } from '../subject-form/subject-form.component';
 import { Subject } from '../subject';
 import { SubjectService } from '../subject.service';
 
@@ -64,7 +64,7 @@ export class SubjectListComponent implements OnInit, List {
 
   store () {
     this.created = false;
-    const modalRef = this.modalService.open(FormComponent, this.options);
+    const modalRef = this.modalService.open(SubjectFormComponent, this.options);
 
     modalRef.componentInstance.saved.subscribe((response: any) => {
       this.created = response.created;
@@ -78,7 +78,7 @@ export class SubjectListComponent implements OnInit, List {
     this.created = false;
     this.find(subject.id).subscribe(
       (subject) => {
-        const modalRef = this.modalService.open(FormComponent, this.options);
+        const modalRef = this.modalService.open(SubjectFormComponent, this.options);
 
         modalRef.componentInstance.subject = subject;
         modalRef.componentInstance.saved.subscribe((response: any) => {

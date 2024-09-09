@@ -2,17 +2,11 @@
   <div class="col-md-12">
     <div class="modal-header modal-title">
       <div class="title-text">
-        <div>Author form</div>
+        <div>{{ formLabel }}</div>
       </div>
     </div>
     <div class="modal-body">
-      <form [formGroup]="autorForm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" maxlength="40"
-                 formControlName="name"/>
-        </div>
-      </form>
+      <ng-content/>
       @if (errors.length > 0) {
         <div class="row justify-content-md-center">
           <div class="col-md-12">
@@ -28,7 +22,7 @@
     <div class="modal-footer">
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="button" class="btn btn-primary" (click)="save()">{{ submitBtn }}</button>
-        <button type="button" class="btn btn-light" (click)="activeModal.close()">Fechar</button>
+        <button type="button" class="btn btn-light" (click)="activeModal.close()">Close</button>
       </div>
     </div>
   </div>

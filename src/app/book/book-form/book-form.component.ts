@@ -2,6 +2,8 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorService } from '../../author/author.service';
+import { Form as FormInterface } from '../../shared/form/form';
+import { FormComponent } from '../../shared/form/form.component';
 import { SubjectService } from '../../subject/subject.service';
 import { Book } from '../book';
 import { BookService } from '../book.service';
@@ -9,17 +11,15 @@ import { BookService } from '../book.service';
 @Component({
   selector: 'book-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  imports: [FormsModule, ReactiveFormsModule, FormComponent],
+  templateUrl: './book-form.component.html'
 })
-export class FormComponent implements OnInit, AfterViewInit {
+export class BookFormComponent implements OnInit, AfterViewInit, FormInterface {
 
   @Output() saved = new EventEmitter();
   @Input() book?: Book;
   public authors: any[] = [];
   public subjects: any[] = [];
-  public submitBtn = 'Save';
   public bookForm!: FormGroup;
   public errors: any = [];
 
@@ -27,7 +27,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private service: BookService,
-    private autorService: AuthorService,
+    private authorService: AuthorService,
     private subjectService: SubjectService
   ) {}
 
@@ -81,7 +81,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   getAuthors () {
-    this.autorService.all().subscribe(
+    this.authorService.all().subscribe(
       (authors: any) => this.authors = authors
     );
   }
