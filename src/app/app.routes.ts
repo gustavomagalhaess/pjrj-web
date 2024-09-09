@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { ListagemComponent as LivroListagemComponent } from './livro/listagem/listagem.component';
-import { ListagemComponent as AutorListagemComponent } from './autor/listagem/listagem.component';
-import { ListagemComponent as AssuntoListagemComponent } from './assunto/listagem/listagem.component';
-import { RelatorioComponent } from './relatorio/relatorio.component';
+import { AuthorListComponent } from './author/author-list/author-list.component';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { ReportsComponent } from './reports/reports.component';
+import { SubjectListComponent } from './subject/subject-list/subject-list.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/livros', pathMatch: 'full'  },
-    { path: 'livros', component: LivroListagemComponent },
-    { path: 'autores', component: AutorListagemComponent },
-    { path: 'assuntos', component: AssuntoListagemComponent },
-    { path: 'relatorio', component: RelatorioComponent }
+  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: 'books', component: BookListComponent },
+  { path: 'authors', component: AuthorListComponent },
+  { path: 'subjects', component: SubjectListComponent },
+  { path: 'reports', component: ReportsComponent }
 ];
