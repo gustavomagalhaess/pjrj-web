@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="modal-header modal-title">
+      <div class="title-text">
+        <div>Book form</div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p>Do you want to delete the <b>{{ book.title }}</b>? </p>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col-md-12 d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" class="btn btn-primary" (click)="excluir()">{{ confirmBtn }}</button>
+          <button type="button" class="btn" (click)="activeModal.close()">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

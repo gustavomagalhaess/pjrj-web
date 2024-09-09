@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <dx-pie-chart
+        [dataSource]="authors"
+        title="Books per author."
+        type="doughnut"
+      >
+        <dxi-series
+          argumentField="name"
+          valueField="count"
+        >
+          <dxo-label
+            [visible]="true"
+            position="columns"
+          >
+            <dxo-connector [visible]="true"></dxo-connector>
+          </dxo-label>
+        </dxi-series>
+      </dx-pie-chart>
+    </div>
+    <div class="col-sm-6">
+      <dx-pie-chart
+        [dataSource]="subjects"
+        title="Books per subject."
+        type="doughnut"
+      >
+        <dxi-series
+          argumentField="description"
+          valueField="count"
+        >
+          <dxo-label
+            [visible]="true"
+            position="columns"
+          >
+            <dxo-connector [visible]="true"></dxo-connector>
+          </dxo-label>
+        </dxi-series>
+      </dx-pie-chart>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h1>Book report.</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <dx-data-grid id="dataGrid"
+                    [dataSource]="books"
+                    keyExpr="id"
+      ></dx-data-grid>
+    </div>
+  </div>
+</div>
