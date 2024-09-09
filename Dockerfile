@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 # instala um servidor http simples para servir conteúdo estático
-#RUN npm install -g http-server
+RUN npm install -g http-server
 
 # faz da pasta 'app' o diretório atual de trabalho
 WORKDIR /app
@@ -18,9 +18,6 @@ COPY . .
 # compila a aplicação de produção com minificação
 RUN npm run build
 
-RUN npn start
-
 EXPOSE 8080
 
-#CMD [ "http-server", "dist" ]
-CMD [ "dist" ]
+CMD [ "http-server", "dist" ]
